@@ -12,10 +12,14 @@ const Banner = () => {
                     <h1 class="mb-5 text-5xl font-bold">
                         Shawarmer
                     </h1>
-                    <p class="mb-5">
+                    <p class="mb-3">
                         Shawarmer Knowladge base
                     </p>
-                    <button class="btn btn-primary">Search</button>
+                    <div class="flex space-x-2">
+                        <input type="text" placeholder="Search" class="w-full input input-primary input-bordered" />
+                        <button class="btn btn-primary">Search</button>
+                    </div>
+
                 </div>
             </div>
         </div>
