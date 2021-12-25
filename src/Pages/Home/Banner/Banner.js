@@ -3,21 +3,21 @@ import React from 'react';
 const Banner = () => {
     return (
 
-        <div class="hero min-h-screen" style={{
+        <div className="hero h-96 w-full  " style={{
             backgroundImage: "url(https://picsum.photos/id/1005/1600/1400)"
         }}>
-            <div class="hero-overlay bg-opacity-60"></div>
-            <div class="text-center hero-content text-neutral-content">
-                <div class="max-w-md">
-                    <h1 class="mb-5 text-5xl font-bold">
+            <div className="hero-overlay bg-opacity-60"></div>
+            <div className="text-center hero-content text-neutral-content">
+                <div className="max-w-md">
+                    <h1 className="mb-5 text-5xl font-bold">
                         Shawarmer
                     </h1>
-                    <p class="mb-3">
+                    <p className="mb-3">
                         Shawarmer Knowladge base
                     </p>
-                    <div class="flex space-x-2">
-                        <input type="text" placeholder="Search" class="w-full input input-primary input-bordered" />
-                        <button class="btn btn-primary">Search</button>
+                    <div className="flex space-x-2">
+                        <input type="text" placeholder="Search" className=" text-black w-full input input-primary input-bordered" />
+                        <button className="btn btn-primary">Search</button>
                     </div>
 
                 </div>
