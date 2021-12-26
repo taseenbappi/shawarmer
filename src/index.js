@@ -4,11 +4,33 @@ import { BrowserRouter } from "react-router-dom";
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
+import {
+  ApolloClient,
+  InMemoryCache,
+  ApolloProvider,
+
+
+} from "@apollo/client";
+
+const client = new ApolloClient({
+  uri: 'https://clean-cow-75.hasura.app/v1/graphql',
+  cache: new InMemoryCache(),
+  headers: {
+    "content-type": "application/json",
+    "x-hasura-admin-secret": "KbWhHbIwBehquSfkmK9JEd46tYC2tvvvY768I6FyKknFWc18vo8UWiYMT06cdpwS",
+  }
+
+});
+
+
+console.log(client);
 
 ReactDOM.render(
   <React.StrictMode>
     <BrowserRouter>
-      <App />
+      <ApolloProvider client={client}>
+        <App />
+      </ApolloProvider>,
     </BrowserRouter>
   </React.StrictMode>,
   document.getElementById('root')
