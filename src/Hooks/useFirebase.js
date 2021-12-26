@@ -5,7 +5,10 @@ import {
     signInWithPopup,
     signOut,
     onAuthStateChanged,
-    GoogleAuthProvider
+    GoogleAuthProvider,
+    updateProfile,
+    createUserWithEmailAndPassword,
+    signInWithEmailAndPassword
 } from "firebase/auth";
 
 
@@ -18,9 +21,63 @@ const useFirebase = () => {
 
     const [user, setUser] = useState({});
     const [error, setError] = useState('');
+    const [authError, setAuthError] = useState('');
     const [isLoading, setIsLoading] = useState(true);
 
-    console.log(user);
+    // user email and password register hangler
+    const registerHangler = (userInfo, location, navigate) => {
+        setIsLoading(true);
+        createUserWithEmailAndPassword(auth, userInfo.email, userInfo.password)
+
+            .then((userCredential) => {
+                // Signed in 
+                // const user = userCredential.user;
+                const newUser = { displayName: userInfo.displayName, email: userInfo.email };
+                setUser(newUser);
+
+                setAuthError('');
+
+                const destination = location?.state?.from || "/home";
+                navigate(destination);
+                // user profile Update
+                updateProfile(auth.currentUser, {
+                    displayName: userInfo.displayName
+                }).then(() => {
+                    // Profile updated!
+
+                }).catch((error) => {
+                    // An error occurred
+                    setError(error.message);
+                });
+
+            })
+            .catch((error) => {
+                const errorMessage = error.message;
+                setAuthError(errorMessage);
+                // ..
+            }).finally(() => setIsLoading(false));
+    }
+    // register users login hangler
+    const registerUserSignInHangler = (userInfo, location, navigate) => {
+        setIsLoading(true);
+        signInWithEmailAndPassword(auth, userInfo.email, userInfo.password)
+            .then((userCredential) => {
+                // Signed in 
+                const user = userCredential.user;
+                setUser(user);
+                const destination = location?.state?.from || "/home";
+                navigate(destination);
+                setAuthError("");
+
+                // ...
+            })
+            .catch((error) => {
+
+                const errorMessage = error.message;
+                setAuthError(errorMessage);
+
+            }).finally(() => setIsLoading(false));
+    }
 
     // google SignIn handle
     const googleSignInHandler = (location, navigate) => {
@@ -75,6 +132,9 @@ const useFirebase = () => {
     return {
         googleSignInHandler,
         logOut,
+        registerHangler,
+        registerUserSignInHangler,
+        authError,
         user,
         error,
         isLoading
