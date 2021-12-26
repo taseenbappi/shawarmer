@@ -13,12 +13,14 @@ firebaseAuthInit()
 
 const useFirebase = () => {
 
+    const googleProvider = new GoogleAuthProvider();
+    const auth = getAuth();
+
     const [user, setUser] = useState({});
     const [error, setError] = useState('');
     const [isLoading, setIsLoading] = useState(true);
 
-    const googleProvider = new GoogleAuthProvider();
-    const auth = getAuth();
+    console.log(user);
 
     // google SignIn handle
     const googleSignInHandler = (location, navigate) => {

@@ -24,7 +24,7 @@ const Articles = () => {
                                 <li>blog-1</li>
 
                             </ul>
-                            <button class="btn btn-outline btn-primary">More <FaArrowRight className='mx-1'></FaArrowRight></button>
+                            <button className="btn btn-outline btn-primary">More <FaArrowRight className='mx-1'></FaArrowRight></button>
                         </div>
                     </div>
                     <div className="p-4 lg:w-1/3 ">
@@ -40,7 +40,7 @@ const Articles = () => {
                                 <li>blog-1</li>
 
                             </ul>
-                            <button class="btn btn-outline btn-primary">More <FaArrowRight className='mx-1'></FaArrowRight></button>
+                            <button className="btn btn-outline btn-primary">More <FaArrowRight className='mx-1'></FaArrowRight></button>
                         </div>
                     </div>
                     <div className="p-4 lg:w-1/3 ">
@@ -56,7 +56,7 @@ const Articles = () => {
                                 <li>blog-1</li>
 
                             </ul>
-                            <button class="btn btn-outline btn-primary">More <FaArrowRight className='mx-1'></FaArrowRight></button>
+                            <button className="btn btn-outline btn-primary">More <FaArrowRight className='mx-1'></FaArrowRight></button>
                         </div>
                     </div>
 
