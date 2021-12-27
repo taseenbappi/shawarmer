@@ -5,6 +5,7 @@ import AuthProvider from './context/AuthProvider';
 import Login from './Pages/Login/Login/Login';
 import Register from './Pages/Login/Register/Register';
 import Articles from './Pages/Home/ArticleContainer/Articles/Articles';
+import Dashboard from './Pages/Dashboard/Dashboard/Dashboard';
 
 function App() {
   return (
@@ -16,6 +17,7 @@ function App() {
           <Route path="/login" element={<Login />} />
           <Route path="/register" element={<Register />} />
           <Route path="/articles" element={<Articles />} />
+          <Route path="/dashboard" element={<Dashboard />} />
         </Routes>
       </AuthProvider>
 

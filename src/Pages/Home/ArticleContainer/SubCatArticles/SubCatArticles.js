@@ -21,7 +21,7 @@ const SubCatArticles = () => {
     if (loading) return <p>Loading...</p>;
     if (error) return <p>Error :(</p>;
     const { sub_catagories } = data;
-    console.log(sub_catagories);
+
 
     return (
         <div className=" px-5 py-5 mx-auto bg-gray-50">
