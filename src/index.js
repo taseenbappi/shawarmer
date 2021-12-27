@@ -8,13 +8,13 @@ import {
   ApolloClient,
   InMemoryCache,
   ApolloProvider,
-
-
 } from "@apollo/client";
 
 const client = new ApolloClient({
+
   uri: 'https://clean-cow-75.hasura.app/v1/graphql',
   cache: new InMemoryCache(),
+
   headers: {
     "content-type": "application/json",
     "x-hasura-admin-secret": "KbWhHbIwBehquSfkmK9JEd46tYC2tvvvY768I6FyKknFWc18vo8UWiYMT06cdpwS",
@@ -22,8 +22,6 @@ const client = new ApolloClient({
 
 });
 
-
-console.log(client);
 
 ReactDOM.render(
   <React.StrictMode>

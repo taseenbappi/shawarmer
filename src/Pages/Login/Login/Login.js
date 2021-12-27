@@ -8,7 +8,7 @@ const Login = () => {
     let location = useLocation();
     let navigate = useNavigate();
 
-    const { googleSignInHandler, registerUserSignInHangler } = useAuth();
+    const { googleSignInHandler, registerUserSignInHangler, isLoading } = useAuth();
     const googleSignIn = () => {
         googleSignInHandler(location, navigate);
     }
@@ -27,6 +27,10 @@ const Login = () => {
 
         registerUserSignInHangler(userInfo, location, navigate);
         console.log(userInfo);
+    }
+
+    if (isLoading) {
+        return <button class="btn btn-sm btn-ghost loading">loading</button>
     }
     return (
         <>
