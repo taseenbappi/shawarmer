@@ -1,10 +1,14 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import useAuth from '../../../Hooks/useAuth';
+import { HashLink } from 'react-router-hash-link';
 
 const Navigation = () => {
+
     const { user, logOut } = useAuth();
+
     return (
+
         <header className=" body-font bg-gray-900">
             <div className="container mx-auto flex flex-wrap p-5 flex-col md:flex-row items-center">
                 <Link className="flex title-font font-medium items-center text-gray-900 mb-4 md:mb-0" to='/'>
@@ -15,8 +19,8 @@ const Navigation = () => {
                 </Link>
                 <nav className="md:ml-auto md:mr-auto flex flex-wrap items-center text-base justify-center text-white">
                     <Link className="mr-5 hover:text-orange-500" to='/home'>Home</Link>
-                    <Link className="mr-5 hover:text-orange-500" to='/allArticles'>All Articles</Link>
-                    <Link className="mr-5 hover:text-orange-500" to='/about'>About</Link>
+                    <Link className="mr-5 hover:text-orange-500" to='/articles'>All Articles</Link>
+                    <HashLink className="mr-5 hover:text-orange-500" to='/home#about'>About</HashLink>
                     {user.email && <Link className="mr-5 hover:text-orange-500" to='/dashboard'>Dashboard</Link>}
 
 

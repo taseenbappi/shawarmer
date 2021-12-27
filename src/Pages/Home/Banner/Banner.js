@@ -9,7 +9,7 @@ const Banner = () => {
             <div className="hero-overlay bg-opacity-60"></div>
             <div className="text-center hero-content text-neutral-content">
                 <div className="max-w-md">
-                    <h1 className="mb-5 text-5xl font-bold">
+                    <h1 className="mb-5 text-5xl font-bold uppercase" style={{ fontFamily: "'Poppins', sans-serif", fontWeight: "800" }}>
                         Shawarmer
                     </h1>
                     <p className="mb-3">
@@ -17,7 +17,7 @@ const Banner = () => {
                     </p>
                     <div className="flex space-x-2">
                         <input type="text" placeholder="Search" className=" text-black w-full input input-primary input-bordered" />
-                        <button className="btn btn-primary">Search</button>
+                        <button className="btn btn-primary capitalize">Search</button>
                     </div>
 
                 </div>

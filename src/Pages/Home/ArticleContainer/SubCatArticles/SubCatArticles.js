@@ -24,7 +24,7 @@ const SubCatArticles = () => {
     console.log(sub_catagories);
 
     return (
-        <div className="container px-5 py-10 mx-auto">
+        <div className=" px-5 py-5 mx-auto bg-gray-50">
 
             <div className="flex flex-wrap -m-4 items-center justify-center">
                 {

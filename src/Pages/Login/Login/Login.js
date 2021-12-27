@@ -30,7 +30,7 @@ const Login = () => {
     }
 
     if (isLoading) {
-        return <button class="btn btn-sm btn-ghost loading">loading</button>
+        return <button className="btn btn-sm btn-ghost loading">loading</button>
     }
     return (
         <>

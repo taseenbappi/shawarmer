@@ -3,7 +3,7 @@ import { IoLogoFacebook, IoLogoTwitter, IoLogoInstagram, IoLogoLinkedin } from "
 
 const Footer = () => {
     return (
-        <footer className="p-10 text-base-content  bg-gray-100">
+        <footer className=" text-base-content  bg-gray-100 m-0">
             <div className="bg-gray-100 flex items-center">
                 <div className=" px-5 py-6 mx-auto flex items-center sm:flex-row flex-col">
                     <a className="flex title-font font-medium items-center md:justify-start justify-center text-gray-900" href='/'>
