@@ -9,6 +9,7 @@ import Dashboard from './Pages/Dashboard/Dashboard/Dashboard';
 import AddCat from './Pages/Dashboard/AddCat/AddCat';
 import AddSubCat from './Pages/Dashboard/AddSubCat/AddSubCat';
 import AddArticle from './Pages/Dashboard/AddArticle/AddArticle';
+import PrivateRoute from './Pages/PrivateRoute/PrivateRoute';
 
 function App() {
   return (
@@ -20,11 +21,23 @@ function App() {
           <Route path="/login" element={<Login />} />
           <Route path="/register" element={<Register />} />
           <Route path="/articles" element={<Articles />} />
-          <Route path="/dashboard" element={<Dashboard />}>
-            <Route path="addCatagory" element={<AddCat />} />
-            <Route path="addSubCatagory" element={<AddSubCat />} />
-            <Route path="addArticle" element={<AddArticle />} />
-          </Route>
+
+          <Route path="/dashboard" element={<PrivateRoute>
+            <Dashboard >
+            </Dashboard>
+          </PrivateRoute>} />
+
+          <Route path="/dashboard/addCatagory" element={<PrivateRoute>
+            <AddCat />
+          </PrivateRoute>} />
+          <Route path="/dashboard/addSubCatagory" element={<PrivateRoute>
+            <AddSubCat />
+          </PrivateRoute>} />
+          <Route path="/dashboard/addArticle" element={<PrivateRoute>
+            <AddArticle />
+          </PrivateRoute>} />
+
+
         </Routes>
       </AuthProvider>
 

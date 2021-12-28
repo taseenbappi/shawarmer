@@ -7,7 +7,7 @@ const Dashboard = () => {
         <>
 
             <Menu></Menu>
-
+            <h1 className='font-extrabold text-3xl	py-5'>Welcome to SHAWARMER</h1>
             <Outlet />
 
         </>
