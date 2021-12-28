@@ -21,7 +21,7 @@ const Register = () => {
             password: user_pass
         }
         registerHangler(userInfo, location, navigate);
-        console.log(userInfo);
+
     }
     return (
         <>

@@ -26,7 +26,7 @@ const Login = () => {
         }
 
         registerUserSignInHangler(userInfo, location, navigate);
-        console.log(userInfo);
+
     }
 
     if (isLoading) {

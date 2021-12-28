@@ -4,8 +4,6 @@ const Article = (props) => {
     const { title, content, create_time } = props.article;
     const date = new Date(create_time);
 
-    console.log(props.article.sub_catagory)
-
     return (
         <div className="-my-8 divide-y-2 divide-gray-100">
             <div className="py-8 flex flex-wrap md:flex-nowrap">

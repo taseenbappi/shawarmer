@@ -1,25 +1,15 @@
 import React from 'react';
-import { gql, useQuery } from '@apollo/client';
 import Menu from '../Menu/Menu';
+import useCatagory from '../../../Hooks/useCatagory';
+import useSubCatagory from '../../../Hooks/useSubCatagory';
 
-const CATAGORIES = gql`
-        query Catagory {
-            catagories {
-            id
-            cat_name
-            }
-        }
-`;
 
 
 const AddArticle = () => {
 
     const date = new Date();
-
-    const { loading, error, data } = useQuery(CATAGORIES);
-    if (loading) return <p>Loading...</p>;
-    if (error) return <p>Error :(</p>;
-    const { catagories } = data;
+    const { catagories } = useCatagory();
+    const { sub_catagories } = useSubCatagory();
 
     return (
         <>
@@ -28,7 +18,7 @@ const AddArticle = () => {
                 <div className="container px-5 py-5 mx-auto flex flex-wrap justify-center items-center">
 
                     <div className="lg:w-96 md:w-96 bg-gray-100 rounded-lg p-8 flex  flex-col md:ml-auto lg:ml-auto w-full mt-10 md:mt-0 " style={{ marginLeft: "0px" }}>
-                        <h2 className="text-gray-900 text-lg font-medium title-font mb-5">Add Article Sub Catagory</h2>
+                        <h2 className="text-gray-900 text-lg font-medium title-font mb-5">Add Article</h2>
                         <div className="relative mb-4">
 
                             <select className="select select-bordered select-warning w-full max-w-xs">
@@ -44,10 +34,13 @@ const AddArticle = () => {
                         <div className="relative mb-4">
 
                             <select className="select select-bordered select-warning w-full max-w-xs">
-                                <option disabled="disabled" selected="selected">Choose Sub Catagory</option>
-                                <option>sub cat-1</option>
-                                <option>sub cat-1</option>
-                                <option>sub cat-1</option>
+                                <option disabled="disabled" >Choose Sub Catagory</option>
+                                {
+                                    sub_catagories?.map(subCat => <option
+                                        key={subCat.id}
+                                    >{subCat.sub_cat_name}</option>)
+                                }
+
 
                             </select>
                         </div>
