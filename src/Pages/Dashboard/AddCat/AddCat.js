@@ -1,7 +1,10 @@
 import { gql, useMutation } from '@apollo/client';
-import React, { useRef } from 'react';
-import useCatagory from '../../../Hooks/useCatagory';
+import React, { useRef, useState } from 'react';
+import { Link } from 'react-router-dom';
+
+
 import Menu from '../Menu/Menu';
+import CatTable from './CatTable';
 
 const ADD_CATAGORY = gql`
 mutation AddCatagory($cat_name: String!) {
@@ -12,22 +15,12 @@ mutation AddCatagory($cat_name: String!) {
     }
     }
 }
-  
 `;
-// const DELETE_CATAGORY = gql`
-// mutation MyMutation($_eq: Int = 19) {
-//     delete_catagories(where: {id: {_eq: $_eq}}) {
-//       affected_rows
-//       returning {
-//         id
-//         cat_name
-//       }
-//     }
-//   }
+
 
 // `;
 const AddCat = () => {
-    const { catagories } = useCatagory();
+
     const cat_name = useRef('');
     const [addCat, { data, loading, error }] = useMutation(ADD_CATAGORY);
 
@@ -40,11 +33,26 @@ const AddCat = () => {
         addCat({ variables: cat_info });
     }
 
+
+
     if (loading) return 'Submitting...';
-    if (error) return `Submission error! ${error.message}`;
-    if (data?.insert_catagories.returning.length > 0) {
-        alert("catagory added!!")
-    }
+
+    if (error) {
+
+        return <>
+
+            `Submission error!  `
+            <h1>Go to </h1>
+            <Link className="mr-5 hover:text-orange-500" to='/dashboard'>
+                <button className="inline-flex items-center bg-gray-100 border-0 py-1 px-3 focus:outline-none hover:bg-gray-200 rounded text-base mt-4 md:mt-0" >Dashboard
+                    <svg fill="none" stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" className="w-4 h-4 ml-1" viewBox="0 0 24 24">
+                        <path d="M5 12h14M12 5l7 7-7 7"></path>
+                    </svg>
+                </button>
+            </Link>
+        </>;
+    };
+
     return (
         <>
             <Menu></Menu>
@@ -61,41 +69,14 @@ const AddCat = () => {
                             </div>
 
                             <button className="text-white bg-gray-900 border-0 py-2 px-8 focus:outline-none hover:bg-orange-500  rounded text-lg" onClick={catagoryHandler}>Add</button>
-                            {error && <p>Duplicate catagory, type unique name</p>}
+                            {error && <p className='text-red-600'>Duplicate catagory, type unique name</p>}
+                            {data?.insert_catagories.returning.length > 0 && <p className='text-green-600'>Catagory added successfully</p>}
 
                         </div>
                     </div>
                 </section>
+                <CatTable></CatTable>
 
-                <div className="overflow-x-auto container mx-auto ">
-                    <table className="table-auto w-6/12  whitespace-no-wrap mx-auto text-center shadow-md ">
-                        <thead>
-                            <tr>
-                                <th className="px-4 py-3 title-font tracking-wider font-medium text-gray-900 text-sm bg-gray-100 rounded-tl rounded-bl">ID</th>
-                                <th className="px-4 py-3 title-font tracking-wider font-medium text-gray-900 text-sm bg-gray-100">Catagory Name</th>
-
-                                <th className="w-10 title-font tracking-wider font-medium text-gray-900 text-sm bg-gray-100 rounded-tr rounded-br">Action</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            {
-                                catagories?.map(cat => <tr
-                                    key={cat.id}
-                                    className='border-b-2'>
-                                    <td className="border-t-2 border-gray-200 px-4 py-3 text-center">{cat.id}</td>
-                                    <td className="border-t-2 border-gray-200 px-4 py-3 text-centertext-center">{cat.cat_name}</td>
-
-                                    <td className="border-t-2 border-gray-200 w-10 text-center">
-                                        <button className='btn btn-square bg-red-600 border-0 p-1'>X</button>
-                                    </td>
-                                </tr>)
-                            }
-
-
-
-                        </tbody>
-                    </table>
-                </div>
             </div>
 
         </>
