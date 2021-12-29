@@ -22,7 +22,7 @@ const AddArticle = () => {
                         <div className="relative mb-4">
 
                             <select className="select select-bordered select-warning w-full max-w-xs">
-                                <option disabled="disabled" selected="selected">Choose Catagory</option>
+                                <option disabled="disabled" >Choose Catagory</option>
                                 {
                                     catagories?.map(cat => <option
                                         key={cat.id}

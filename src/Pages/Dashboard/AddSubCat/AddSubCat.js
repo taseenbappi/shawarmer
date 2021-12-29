@@ -1,7 +1,6 @@
-import React, { useRef } from 'react';
+import React, { useRef, useState } from 'react';
 import { gql, useMutation } from '@apollo/client';
 import Menu from '../Menu/Menu';
-import { useState } from 'react/cjs/react.development';
 import useCatagory from '../../../Hooks/useCatagory';
 
 
@@ -23,11 +22,13 @@ const ADD_SUB_CATAGORIES = gql`
 `;
 
 const AddSubCat = (props) => {
+    const [statusValue, setStatusValue] = useState('');
     //load all catagories using custom hook
     const { catagories } = useCatagory();
 
-    // const [addSubCat, { data, loading, error }] = useMutation(ADD_SUB_CATAGORIES);
-    const [statusValue, setStatusValue] = useState('');
+    const [addSubCat, { data, loading, error }] = useMutation(ADD_SUB_CATAGORIES);
+
+
 
     const handleStatusChange = e => {
         setStatusValue(e.target.value);
@@ -43,14 +44,12 @@ const AddSubCat = (props) => {
             sub_cat_name: sub_catagory_name,
             cat_name: statusValue,
         }
-        // addSubCat({ variables: sub_cat_info });
+        addSubCat({ variables: sub_cat_info });
     }
 
-    // if (loading) return 'Submitting...';
-    // if (error) return `Submission error! ${error.message}`;
-    // if (data?.insert_catagories.returning.length > 0) {
-    //     alert("sub catagory added!!")
-    // }
+
+
+
     return (
         <>
             <Menu></Menu>

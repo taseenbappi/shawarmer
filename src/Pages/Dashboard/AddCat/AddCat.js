@@ -79,7 +79,9 @@ const AddCat = () => {
                         </thead>
                         <tbody>
                             {
-                                catagories.map(cat => <tr className='border-b-2'>
+                                catagories?.map(cat => <tr
+                                    key={cat.id}
+                                    className='border-b-2'>
                                     <td className="border-t-2 border-gray-200 px-4 py-3 text-center">{cat.id}</td>
                                     <td className="border-t-2 border-gray-200 px-4 py-3 text-centertext-center">{cat.cat_name}</td>
 
